@@ -90,3 +90,7 @@ class ClientComment(Model):
     class Meta:
         verbose_name = _("Client Comment")
         verbose_name_plural = _("Client Comments")
+
+
+class ClientEmail(Model):
+    email = EmailField(max_length=100, verbose_name=_("Email"))

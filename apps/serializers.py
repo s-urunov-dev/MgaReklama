@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer, CharField
 
-from apps.models import Gallery, SiteSetting, Partner, Service, ContactForm
+from apps.models import Gallery, SiteSetting, Partner, Service, ContactForm, ClientEmail
 
 
 class ImageModelSerializer(ModelSerializer):
@@ -33,3 +33,9 @@ class ContactFormModelSerializers(ModelSerializer):
     class Meta:
         model = ContactForm
         exclude = 'created',
+
+
+class ClientEmailModelSerializers(ModelSerializer):
+    class Meta:
+        model = ClientEmail
+        fields = '__all__'

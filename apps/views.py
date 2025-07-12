@@ -1,9 +1,9 @@
 from django.utils import translation
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 
-from apps.models import Gallery, SiteSetting, Partner, Service, ContactForm
+from apps.models import Gallery, SiteSetting, Partner, Service, ContactForm, ClientEmail
 from apps.serializers import ImageModelSerializer, SiteSettingSerializer, PartnerModelSerializer, \
-    ServiceModelSerializer, ContactFormModelSerializers
+    ServiceModelSerializer, ContactFormModelSerializers, ClientEmailModelSerializers
 
 
 class GalleryListAPIView(ListAPIView):
@@ -52,3 +52,8 @@ class ServiceListAPIView(ListAPIView):
 class ContactFormCreateAPIView(CreateAPIView):
     model = ContactForm
     serializer_class = ContactFormModelSerializers
+
+
+class EmailCreateAPIView(CreateAPIView):
+    model = ClientEmail
+    serializer_class = ClientEmailModelSerializers
