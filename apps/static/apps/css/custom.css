@@ -1,0 +1,11 @@
+.login-logo img {
+    max-height: 200px !important;
+    width: auto;
+    height: auto;
+    border-radius: 100%;
+}
+
+
+.brand-link img{
+    border-radius: 10px !important;
+}
