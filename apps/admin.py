@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from parler.admin import TranslatableAdmin
 
-from apps.models import Gallery, SiteSetting, ContactForm, Partner, Service
+from apps.models import Gallery, SiteSetting, ContactForm, Partner, Service, ClientEmail
 
 
 @admin.register(Gallery)
@@ -34,6 +34,11 @@ class PartnerAdmin(admin.ModelAdmin):
 @admin.register(Service)
 class ServiceTranslatableAdmin(TranslatableAdmin):
     list_display = 'title',
+
+
+@admin.register(ClientEmail)
+class ClientEmailModelAdmin(admin.ModelAdmin):
+    pass
 
 
 admin.site.unregister(Group)

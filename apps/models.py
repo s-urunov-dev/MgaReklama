@@ -94,3 +94,11 @@ class ClientComment(Model):
 
 class ClientEmail(Model):
     email = EmailField(max_length=100, verbose_name=_("Email"))
+
+    class Meta:
+        verbose_name = _("Client Email")
+        verbose_name_plural = _("Client Emails")
+
+    def __str__(self):
+        return self.email
+
