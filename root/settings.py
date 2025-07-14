@@ -26,7 +26,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.common.CommonMiddleware",
+    # "django.middleware.common.CommonMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -44,6 +44,8 @@ REST_FRAMEWORK = {
 }
 
 ROOT_URLCONF = 'root.urls'
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 TEMPLATES = [
     {
@@ -70,7 +72,6 @@ DATABASES = {
     }
 }
 
-CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_METHODS = [
     "GET",
@@ -88,6 +89,10 @@ CORS_ALLOW_HEADERS = [
 
 
 CORS_ALLOWED_ORIGINS = [
+    "https://api.mgareklama.com",
+]
+
+CSRF_TRUSTED_ORIGINS = [
     "https://api.mgareklama.com",
 ]
 
