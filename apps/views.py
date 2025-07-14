@@ -55,5 +55,5 @@ class ContactFormCreateAPIView(CreateAPIView):
 
 
 class EmailCreateAPIView(CreateAPIView):
-    model = ClientEmail
+    queryset = ClientEmail.objects.all()
     serializer_class = ClientEmailModelSerializers
