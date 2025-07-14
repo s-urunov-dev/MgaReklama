@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'apps.apps.AppsConfig',
     'drf_spectacular',
     "corsheaders",
+    'rest_framework',
 
 ]
 
@@ -39,8 +40,10 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    # 'PAGE_SIZE': 50
+
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
 }
 
 ROOT_URLCONF = 'root.urls'
@@ -72,7 +75,6 @@ DATABASES = {
     }
 }
 
-
 CORS_ALLOW_METHODS = [
     "GET",
     "POST",
@@ -87,11 +89,9 @@ CORS_ALLOW_HEADERS = [
     "x-requested-with",
 ]
 
-
 CORS_ALLOWED_ORIGINS = [
     "https://api.mgareklama.com",
 ]
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -138,7 +138,6 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
@@ -152,6 +151,7 @@ SPECTACULAR_SETTINGS = {
 }
 
 from django.utils.translation import gettext_lazy as _
+
 JAZZMIN_SETTINGS = {
     "site_title": "MGA",
     "site_header": "MGA Reklama",
@@ -162,7 +162,6 @@ JAZZMIN_SETTINGS = {
     "copyright": "MGA Reklama",
     # Field name on user model that contains avatar ImageField/URLField/Charfield or a callable that receives the user
     "user_avatar": None,
-
 
     ############
     # Top Menu #
@@ -266,4 +265,3 @@ JAZZMIN_SETTINGS = {
     # Add a language dropdown into the admin
     "language_chooser": True,
 }
-
