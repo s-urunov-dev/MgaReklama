@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-^&%i)+!!zfe^-$btu07$^8!pdqtw+v-8g=xle66-z00te1a)l)
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['api.mgareklama.com']
+ALLOWED_HOSTS = ['api.mgareklama.com', 'https://mgareklama.com']
 
 INSTALLED_APPS = [
     'jazzmin',
@@ -78,6 +78,7 @@ DATABASES = {
 CORS_ALLOW_METHODS = [
     "GET",
     "POST",
+    "OPTIONS"
 ]
 
 CORS_ALLOW_HEADERS = [
@@ -91,6 +92,8 @@ CORS_ALLOW_HEADERS = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://api.mgareklama.com",
+    "https://mgareklama.com",
+    "http://localhost:3000"
 ]
 
 AUTH_PASSWORD_VALIDATORS = [
