@@ -26,7 +26,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
-    # "django.middleware.common.CommonMiddleware",
+    "django.middleware.common.CommonMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -92,9 +92,6 @@ CORS_ALLOWED_ORIGINS = [
     "https://api.mgareklama.com",
 ]
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://api.mgareklama.com",
-]
 
 AUTH_PASSWORD_VALIDATORS = [
     {
