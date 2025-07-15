@@ -1,13 +1,19 @@
 from rest_framework.serializers import ModelSerializer, CharField
 
-from apps.models import Gallery, SiteSetting, Partner, Service, ContactForm, ClientEmail
+from apps.models import Gallery, SiteSetting, Partner, Service, ContactForm, ClientEmail, GalleryGroup
 
 
-class ImageModelSerializer(ModelSerializer):
+class GalleryGroupSerializer(ModelSerializer):
+    class Meta:
+        model = GalleryGroup
+        fields = ['id', 'image']
+
+class GallerySerializer(ModelSerializer):
+    same_images = GalleryGroupSerializer(many=True, read_only=True)
+
     class Meta:
         model = Gallery
-        fields = '__all__'
-
+        fields = ['id', 'image', 'same_images']
 
 class SiteSettingSerializer(ModelSerializer):
     class Meta:

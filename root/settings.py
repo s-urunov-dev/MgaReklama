@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-^&%i)+!!zfe^-$btu07$^8!pdqtw+v-8g=xle66-z00te1a)l)
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['api.mgareklama.com', 'https://mgareklama.com']
+ALLOWED_HOSTS = ['api.mgareklama.com', 'https://mgareklama.com', '*']
 
 INSTALLED_APPS = [
     'jazzmin',

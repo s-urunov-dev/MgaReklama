@@ -2,13 +2,13 @@ from django.utils import translation
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 
 from apps.models import Gallery, SiteSetting, Partner, Service, ContactForm, ClientEmail
-from apps.serializers import ImageModelSerializer, SiteSettingSerializer, PartnerModelSerializer, \
-    ServiceModelSerializer, ContactFormModelSerializers, ClientEmailModelSerializers
+from apps.serializers import SiteSettingSerializer, PartnerModelSerializer, \
+    ServiceModelSerializer, ContactFormModelSerializers, ClientEmailModelSerializers, GallerySerializer
 
 
 class GalleryListAPIView(ListAPIView):
-    queryset = Gallery.objects.order_by('-id')
-    serializer_class = ImageModelSerializer
+    queryset = Gallery.objects.all()
+    serializer_class = GallerySerializer
 
 
 class SiteSettingView(RetrieveAPIView):

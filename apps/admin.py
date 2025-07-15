@@ -4,12 +4,8 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from parler.admin import TranslatableAdmin
 
-from apps.models import Gallery, SiteSetting, ContactForm, Partner, Service, ClientEmail
+from apps.models import Gallery, SiteSetting, ContactForm, Partner, Service, ClientEmail, GalleryGroup
 
-
-@admin.register(Gallery)
-class ImageAdmin(admin.ModelAdmin):
-    pass
 
 
 @admin.register(SiteSetting)
@@ -40,5 +36,18 @@ class ServiceTranslatableAdmin(TranslatableAdmin):
 class ClientEmailModelAdmin(admin.ModelAdmin):
     pass
 
+
+
+class GalleryGroupInline(admin.TabularInline):
+    model = GalleryGroup
+    extra = 1
+    fields = ['image']
+    verbose_name = "Additional image"
+    verbose_name_plural = "Additional images"
+
+@admin.register(Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = 'id',
+    inlines = GalleryGroupInline,
 
 admin.site.unregister(Group)

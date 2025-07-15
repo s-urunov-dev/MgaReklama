@@ -1,4 +1,5 @@
-from django.db.models import Model, ImageField, DateTimeField, CharField, EmailField, URLField, TextField
+from django.db.models import Model, ImageField, DateTimeField, CharField, EmailField, URLField, TextField, ForeignKey, \
+    CASCADE
 from django.utils.translation import gettext_lazy as _
 from parler.models import TranslatableModel, TranslatedFields
 
@@ -13,11 +14,24 @@ class Banner(Model):
 
 class Gallery(Model):
     image = ImageField(upload_to='images/%Y/%m/%d', verbose_name=_("Image"))
-    created = DateTimeField(auto_now_add=True, verbose_name=_("Created At"))
 
     class Meta:
         verbose_name = _("Gallery")
         verbose_name_plural = _("Galleries")
+
+    def __str__(self):
+        return f"Gallery {self.pk}"
+
+class GalleryGroup(Model):
+    image = ImageField(upload_to='images/%Y/%m/%d', verbose_name=_("Image"))
+    gallery = ForeignKey('apps.Gallery', verbose_name=_("Gallery"), related_name='same_images', on_delete=CASCADE)
+
+    class Meta:
+        verbose_name = _("Gallery Additional Image")
+        verbose_name_plural = _("Gallery Additional Images")
+
+    def __str__(self):
+        return f"Image for Gallery {self.gallery.pk}"
 
 
 class SiteSetting(Model):
