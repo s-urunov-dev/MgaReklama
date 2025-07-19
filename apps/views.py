@@ -30,7 +30,7 @@ from drf_spectacular.utils import extend_schema, OpenApiParameter, OpenApiTypes
         OpenApiParameter(
             name='lang',
             type=OpenApiTypes.STR,
-            location=OpenApiParameter.HEADER,
+            location=OpenApiParameter.QUERY,
             required=False,
             description='Language code (en, ru)'
         )
@@ -41,7 +41,7 @@ class ServiceListAPIView(ListAPIView):
     serializer_class = ServiceModelSerializer
 
     def get_queryset(self):
-        lang = self.request.headers.get('lang') or 'en'
+        lang = self.request.GET.get('lang') or 'en'
         translation.activate(lang)
         self.request.LANGUAGE_CODE = lang
 
