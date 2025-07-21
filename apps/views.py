@@ -37,7 +37,7 @@ from drf_spectacular.utils import extend_schema, OpenApiParameter, OpenApiTypes
     ]
 )
 class ServiceListAPIView(ListAPIView):
-    queryset = Service.objects.all()
+    queryset = Service.objects.order_by('-id')
     serializer_class = ServiceModelSerializer
 
     def get_queryset(self):
